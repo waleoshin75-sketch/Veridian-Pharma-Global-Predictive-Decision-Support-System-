@@ -4853,13 +4853,6 @@ The saved files power the app, [`app.py`](app.py). It has a Home page and one pa
 - **Pricing Control** combines the model with the fixed price rule, and says why an invoice was flagged.
 - The forms ask plain questions. The app works out the model's derived inputs itself, such as heat exposure and months since start.
 
-**Run it yourself**
-
-```bash
-pip install streamlit pandas numpy scikit-learn joblib
-streamlit run app.py
-```
-
 Live app: [Open the Streamlit app](YOUR-STREAMLIT-LINK)
 
 <!-- Add a screenshot: <p align="center"><img src="images/app_screenshot.png" width="100%"></p> -->
