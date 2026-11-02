@@ -145,12 +145,6 @@ The audit changes nothing. It counts every problem first, one reusable function 
 ### Full code
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - PHASE 1: DATA QUALITY AUDIT
-# Audit only. Nothing is cleaned or changed in this phase.
-# Run the cells top to bottom (each "# %%" is one notebook cell).
-# ============================================================
-
 # %% CELL 1 - Imports and the seven tables
 import re
 import numpy as np
@@ -467,13 +461,6 @@ Cleaning is a set of small, reusable helpers applied table by table. Four of the
 ### Full code
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - PHASE 2: DATA CLEANING
-# Run the cells top to bottom (each "# %%" is one notebook cell).
-# Raw tables are never changed; every cleaned table is a new
-# dataframe ending in _clean, and is saved to the pharma_clean folder.
-# ============================================================
-
 # %% CELL 1 - Imports and the seven raw tables
 import os
 import re
@@ -924,15 +911,6 @@ A quick sanity check (not a model) confirmed the new features carry signal: batc
 ### Full code
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - PHASE 3: FEATURE ENGINEERING
-# Input : the seven clean tables saved by Phase 2 (pharma_clean folder)
-# Output: seven feature tables saved to the pharma_features folder
-# Run the cells top to bottom (each "# %%" is one notebook cell).
-# Features are built inside each table, and values from other tables are
-# brought in with simple lookups. The full table joins (star schema) come in Phase 4.
-# ============================================================
-
 # %% CELL 1 - Imports and the seven clean tables
 import os
 import numpy as np
@@ -1288,14 +1266,6 @@ Ten checks confirm every key is unique, no orphan keys remain and every date key
 ### Full code
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - PHASE 4: RELATIONSHIP TABLES (STAR SCHEMA)
-# Input : the seven feature tables saved by Phase 3 (pharma_features folder)
-# Output: pharma_star   -> dim_date + 3 dimensions + 4 fact tables with safe keys
-#         pharma_model  -> 5 joined modelling tables, one per business objective
-# Run the cells top to bottom (each "# %%" is one notebook cell).
-# ============================================================
-
 # %% CELL 1 - Imports and the seven feature tables
 import os
 import numpy as np
@@ -1583,79 +1553,68 @@ Twelve charts, each answering one question before any model is built.
 ### Charts
 
 <p align="center">
-  <img src="images/eda_01_rejection_overview.png" alt="Batch rejection overview" width="100%">
+  <img width="1572" height="575" alt="eda_01_rejection_overview" src="https://github.com/user-attachments/assets/3f865129-432d-4765-85ea-b3af54a306da" />
 </p>
 <p align="center"><em>Q1.1 How often are batches rejected, and is it improving?</em></p>
 
 <p align="center">
-  <img src="images/eda_02_rejection_by_plant_shift.png" alt="Batch rejection rate by plant, formulation, shift and GMP status" width="100%">
+  <img width="1925" height="1176" alt="eda_02_rejection_by_plant_shift" src="https://github.com/user-attachments/assets/5cb52173-6a00-41bf-86b7-ce7dd60998a3" />
 </p>
 <p align="center"><em>Q1.2 Rejection rate by plant, product form, shift and GMP status</em></p>
 
 <p align="center">
-  <img src="images/eda_03_rejection_drivers.png" alt="Rejection against equipment age, purity and temperature deviation" width="100%">
+<img width="2226" height="575" alt="eda_03_rejection_drivers" src="https://github.com/user-attachments/assets/692746f1-e6b2-4d5f-98de-625e8675f7f6" />
 </p>
 <p align="center"><em>Q1.3 Do old equipment, low purity and temperature swings push rejections up?</em></p>
 
 <p align="center">
-  <img src="images/eda_04_demand_distribution.png" alt="Distribution of units sold, raw and on a log scale" width="100%">
+  <img width="1776" height="575" alt="eda_04_demand_distribution" src="https://github.com/user-attachments/assets/edcb5467-1801-475e-8706-126eb132e0b3" />
 </p>
 <p align="center"><em>Q2.1 Demand is skewed, so the model learns on a log scale</em></p>
 
 <p align="center">
-  <img src="images/eda_05_demand_by_group.png" alt="Demand by product and customer" width="100%">
+  <img width="1925" height="650" alt="eda_05_demand_by_group" src="https://github.com/user-attachments/assets/ba9d04ac-5412-4d6f-ba61-e7cac2a55156" />
 </p>
 <p align="center"><em>Q2.2 Which products and customers drive volume?</em></p>
 
 <p align="center">
-  <img src="images/eda_06_demand_trend_discount.png" alt="Demand trend, season and discount effect" width="100%">
+  <img width="1926" height="650" alt="eda_06_demand_trend_discount" src="https://github.com/user-attachments/assets/b95e9901-7d67-4e56-9e5f-5e8c66265db5" />
 </p>
 <p align="center"><em>Q2.3 Is there a trend or season, and does discounting lift volume?</em></p>
 
 <p align="center">
-  <img src="images/eda_07_excursions_overview.png" alt="Excursion rate by packaging, transport mode, season and destination" width="100%">
+  <img width="1916" height="1176" alt="eda_07_excursions_overview" src="https://github.com/user-attachments/assets/0a198807-c0cc-4a8c-ae5b-a1a7eb9b17f0" />
 </p>
 <p align="center"><em>Q3.1 Cold-chain excursion rate by packaging, transport mode, season and destination</em></p>
 
 <p align="center">
-  <img src="images/eda_08_excursion_drivers.png" alt="Excursion rate against transit time and temperature" width="100%">
+  <img width="2228" height="575" alt="eda_08_excursion_drivers" src="https://github.com/user-attachments/assets/e0cb231b-919b-4cc2-bb0e-45ae43c8da97" />
 </p>
 <p align="center"><em>Q3.2 Do longer, hotter journeys fail more often?</em></p>
 
 <p align="center">
-  <img src="images/eda_09_adverse_risk_groups.png" alt="Serious event rate by age group and risk factors" width="100%">
+  <img width="1926" height="1176" alt="eda_09_adverse_risk_groups" src="https://github.com/user-attachments/assets/6474c530-2d1c-4edd-ab5c-1c33df82f118" />
 </p>
 <p align="center"><em>Q4.1 Serious adverse event rate by patient risk group</em></p>
 
 <p align="center">
-  <img src="images/eda_10_serious_by_drug.png" alt="Serious event rate by onset speed, dose and product type" width="100%">
+  <img width="2226" height="576" alt="eda_10_serious_by_drug" src="https://github.com/user-attachments/assets/e73992e9-d059-4dda-9153-494bdb27ff8c" />
 </p>
 <p align="center"><em>Q4.2 Do onset speed, dose and product type matter?</em></p>
 
 <p align="center">
-  <img src="images/eda_11_pricing_overview.png" alt="Price against list price" width="100%">
+  <img width="1926" height="650" alt="eda_11_pricing_overview" src="https://github.com/user-attachments/assets/9fd54592-6841-4fe8-9fee-1f4f2699b7a9" />
 </p>
 <p align="center"><em>Q5.1 What does a normal price look like compared with the list price?</em></p>
 
 <p align="center">
-  <img src="images/eda_12_correlations.png" alt="Correlation of numeric features with each outcome" width="100%">
+  <img width="2526" height="726" alt="eda_12_correlations" src="https://github.com/user-attachments/assets/19f0c988-31c8-4421-94c7-116af210d09b" />
 </p>
 <p align="center"><em>Which numeric features move with each outcome (outcome columns excluded)</em></p>
 
 ### Full code
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - PHASE 5: EXPLORATORY DATA ANALYSIS (EDA)
-# Input : the five modelling tables saved by Phase 4 (pharma_model folder)
-# Output: charts saved to the eda_charts folder
-# Run the cells top to bottom (each "# %%" is one notebook cell).
-#
-# HOW TO READ THIS PHASE
-# Every section starts with the BUSINESS QUESTION it answers.
-# That is the habit to copy: never plot first, ask first.
-# ============================================================
-
 # %% CELL 1 - Imports and the five modelling tables
 import os
 import numpy as np
@@ -1938,16 +1897,6 @@ Objective 5 is unsupervised, so its table holds seven pricing ratios only: price
 #### Objectives 1 to 4 (one script; the `OBJECTIVE` setting picks the objective)
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - MODELLING ROAD MAP
-# STEP 1 OF 10: ANALYTICAL BASE TABLE
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Needs the pharma_model folder from the relationship-table phase.
-# Nothing is encoded, split, scaled or trained here. This step only builds
-# the one clean table the model will learn from.
-# ============================================================
-
 # ---------- 1. Imports, settings and the objective we model first ----------
 import os, json, shutil, warnings
 from datetime import date
@@ -2069,16 +2018,6 @@ abt.head(10)
 #### Objective 5: Pricing anomalies (unsupervised)
 
 ```python
-# ============================================================
-# BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
-# STEP 1 OF 9: ANALYTICAL BASE TABLE
-#
-# Paste this whole file into ONE notebook cell and run it. Nothing to edit.
-# Objective 5 is UNSUPERVISED: the models are never told which invoices are wrong.
-# So no model is ever given a target. The table is only numbers describing how each invoice is priced.
-# The answer key (which invoices are really anomalies) is NOT loaded here. It is separated in Step 2B,
-# kept aside, and used once, in Step 8, to mark the models.
-# ============================================================
 import os, warnings
 import joblib, sklearn
 import numpy as np
@@ -2155,17 +2094,6 @@ Models need numbers. Text columns become 0/1 columns, one per category. Blank ca
 #### Objectives 1 to 4
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - MODELLING ROAD MAP
-# STEP 2 OF 10: ENCODE CATEGORICAL COLUMNS
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 1 (it uses the abt, cfg and features from Step 1).
-# Models only understand numbers, so every text column is turned into
-# 0/1 columns, one column per category.
-# The encoded input table is called X_all. The target is separated in Step 2B.
-# ============================================================
-
 # ---------- 1. Look at the text columns before encoding ----------
 print("Text columns to encode:", cfg["categorical"], "\n")
 for col in cfg["categorical"]:
@@ -2195,15 +2123,6 @@ X_all.head(10)
 #### Objective 5
 
 ```python
-# ============================================================
-# BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
-# STEP 2 OF 9: ENCODE CATEGORICAL COLUMNS
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 1 (it uses abt).
-# Models only understand numbers, so any text column must be turned into numbers first.
-# Here the check is: does the Objective 5 table contain any text column?
-# ============================================================
 text_cols = abt.select_dtypes(exclude="number").columns.tolist()
 print(f"Columns in the table: {abt.shape[1]}   Text (categorical) columns: {len(text_cols)} {text_cols}")
 
@@ -2234,18 +2153,6 @@ For Objective 5 there is no `y`. The planted-anomaly answer key is held aside an
 #### Objectives 1 to 4
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - MODELLING ROAD MAP
-# STEP 2B: SEPARATE X (THE INPUTS) FROM y (THE TARGET)
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 2 and before Step 3 (it uses abt, X_all and cfg).
-# X holds everything the model is allowed to look at.
-# y holds the one thing it must learn to predict.
-# They are kept apart so the answer can never leak into the inputs,
-# and so Step 3 can split both into train and test together.
-# ============================================================
-
 # ---------- 1. Separate ----------
 y_all = abt[cfg["target"]]            # the target: what we want to predict
                                       # X_all (from Step 2) is every input column, already encoded
@@ -2271,17 +2178,6 @@ display_pair
 #### Objective 5
 
 ```python
-# ============================================================
-# BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
-# STEP 2B OF 9: SEPARATE X (THE INPUTS) FROM y (THE ANSWER KEY)
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 2 (it uses X_all and case_info).
-# X = the columns the models learn from.
-# y = the answer key: which invoices are REALLY anomalies.
-# This objective is unsupervised, so y is NOT given to any model. It is separated now and
-# kept aside, then used once, in the evaluation step, to mark the models.
-# ============================================================
 key = pd.read_csv("pharma_raw/anomaly_answer_key.csv").drop_duplicates("sale_id").set_index("sale_id")["is_anomaly"]
 y_all = case_info["sale_id"].map(key).fillna(0).astype(int)
 y_all.index = X_all.index
@@ -2314,16 +2210,6 @@ Stratified keeps the problem rate the same in train and test. The forecast split
 #### Objectives 1 to 4
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - MODELLING ROAD MAP
-# STEP 3 OF 10: TRAIN / TEST SPLIT
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 2 (it uses X_all, y_all, case_info and cfg).
-# The model learns from the training set. The test set is locked away
-# and used once, at the end, to see how the model does on cases it has never seen.
-# ============================================================
-
 # ---------- 1. Split ----------
 if cfg["split"] == "random":
     # 75% train, 25% test. 'stratify' keeps the same share of rejected batches in both parts.
@@ -2363,17 +2249,6 @@ summary
 #### Objective 5
 
 ```python
-# ============================================================
-# BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
-# STEP 3 OF 9: TRAIN / TEST SPLIT
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 2B (it uses X_all, y_all and case_info).
-# The models learn what normal invoices look like from the TRAIN invoices.
-# The TEST invoices are kept aside, so we can later check that the models
-# also spot unusual invoices they have never seen.
-# There is no y: the models are never given the answers.
-# ============================================================
 X_train, X_test, y_train, y_test = train_test_split(X_all, y_all, test_size=0.25, random_state=SEED)
 # y_train and y_test are the answer key for those invoices. They are NOT used for training.
 
@@ -2399,18 +2274,6 @@ The fill values, scaled columns and scaler are saved with the model in section 1
 #### Objectives 1 to 4
 
 ```python
-# ============================================================
-# VERIDIAN PHARMA GLOBAL - MODELLING ROAD MAP
-# STEP 4 OF 10: FEATURE SCALING OF NUMERICAL COLUMNS
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 3 (it uses X_train, X_test and cfg).
-# Columns sit on very different scales (a purity near 99, a temperature
-# deviation near 1, a batch size in the thousands). Scaling puts them on a
-# common footing so no column dominates just because its numbers are bigger.
-# The scaler learns from the TRAIN set only, then is applied to both sets.
-# ============================================================
-
 # ---------- 1. Fill the few blank cells (using TRAIN medians only) ----------
 blank_before = int(X_train.isna().sum().sum() + X_test.isna().sum().sum())
 fill_values = X_train.median().to_dict()          # saved later, so new data is filled the same way
@@ -2450,16 +2313,6 @@ X_train_s.head(10)
 #### Objective 5
 
 ```python
-# ============================================================
-# BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
-# STEP 4 OF 9: FEATURE SCALING
-#
-# Paste this whole file into ONE notebook cell and run it.
-# Run it right after Step 3 (it uses X_train and X_test).
-# Distance-based models (Local Outlier Factor, One-Class SVM) compare invoices by
-# how far apart their numbers are, so every column must be on a common scale.
-# The scaler learns from the TRAIN invoices only, then is applied to both sets.
-# ============================================================
 fill_values = X_train.median().to_dict()                      # saved later, so new invoices are filled the same way
 X_train = X_train.fillna(fill_values); X_test = X_test.fillna(fill_values)
 
@@ -2506,19 +2359,8 @@ For the forecast, Ridge had the lowest cross-validated error (0.299 on the log s
 #### Objective 1: Batch rejection
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS
 # TRAIN MODEL
-#
-# Goal      : learn which batches are likely to be rejected at quality control,
-#             so QA can inspect the riskiest batches before release.
-# Inputs    : X_train_s, y_train  (already encoded, split and scaled in earlier phases)
-# Method    : four classifiers plus a no-skill baseline, each tuned with 5-fold
-#             stratified cross-validation on the TRAINING data only.
-# Output    : trained_models  (dict of fitted models, baseline first)
-#             tuning_results  (cross-validated scores and chosen settings)
-# Not done  : no prediction on X_test and no scoring on y_test (the test set stays untouched).
-# =============================================================================
 import time
 import numpy as np
 import pandas as pd
@@ -2592,21 +2434,8 @@ tuning_results.style.format({"cv_roc_auc": "{:.3f}", "cv_roc_auc_std": "{:.3f}",
 #### Objective 2: Demand forecast
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 2: FORECAST DEMAND
 # TRAIN MODEL
-#
-# Goal      : learn how many units a sale will contain (on a log scale), from product,
-#             customer, price, discount and calendar information, so production and stock
-#             can be planned before orders arrive.
-# Inputs    : X_train_s, y_train  (log of units sold; the earlier 80% of sales, already encoded and scaled)
-# Method    : four regressors plus a no-skill baseline, each tuned with forward-in-time
-#             cross-validation (every fold trains on the past and is tested on the next block),
-#             on the TRAINING data only.
-# Output    : trained_models  (dict of fitted models, baseline first)
-#             tuning_results  (cross-validated errors and chosen settings)
-# Not done  : no prediction on X_test and no scoring on y_test (the latest 20% of sales stays untouched).
-# =============================================================================
 import time
 import numpy as np
 import pandas as pd
@@ -2677,19 +2506,8 @@ tuning_results.style.format({"cv_rmse": "{:.3f}", "cv_rmse_std": "{:.3f}", "cv_r
 #### Objective 3: Cold-chain excursions
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS
 # TRAIN MODEL
-#
-# Goal      : learn which shipments are likely to suffer a temperature excursion in transit,
-#             so packaging or routes can be upgraded before they leave.
-# Inputs    : X_train_s, y_train  (already encoded, split and scaled in earlier phases)
-# Method    : four classifiers plus a no-skill baseline, each tuned with 5-fold
-#             stratified cross-validation on the TRAINING data only.
-# Output    : trained_models  (dict of fitted models, baseline first)
-#             tuning_results  (cross-validated scores and chosen settings)
-# Not done  : no prediction on X_test and no scoring on y_test (the test set stays untouched).
-# =============================================================================
 import time
 import numpy as np
 import pandas as pd
@@ -2763,19 +2581,8 @@ tuning_results.style.format({"cv_roc_auc": "{:.3f}", "cv_roc_auc_std": "{:.3f}",
 #### Objective 4: Serious adverse events
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS
 # TRAIN MODEL
-#
-# Goal      : learn which adverse-event reports describe a serious event (severe or life-threatening),
-#             so the safety team can review the riskiest reports first.
-# Inputs    : X_train_s, y_train  (already encoded, split and scaled in earlier phases)
-# Method    : four classifiers plus a no-skill baseline, each tuned with 5-fold
-#             stratified cross-validation on the TRAINING data only.
-# Output    : trained_models  (dict of fitted models, baseline first)
-#             tuning_results  (cross-validated scores and chosen settings)
-# Not done  : no prediction on X_test and no scoring on y_test (the test set stays untouched).
-# =============================================================================
 import time
 import numpy as np
 import pandas as pd
@@ -2849,19 +2656,8 @@ tuning_results.style.format({"cv_roc_auc": "{:.3f}", "cv_roc_auc_std": "{:.3f}",
 #### Objective 5: Pricing anomalies
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
 # TRAIN MODEL
-#
-# Goal      : learn what a NORMAL invoice looks like, so invoices priced or totalled
-#             unusually can be sent to finance for review.
-# Inputs    : X_train_s  (7 scaled pricing features per invoice; no labels are used)
-# Method    : four unsupervised anomaly detectors, each trained on the TRAINING invoices only.
-#             They are never shown which invoices are wrong; the answer key is used later, only to score them.
-# Output    : trained_models  (dict of fitted detectors)
-#             training_summary (share flagged and score spread on the training invoices)
-# Not done  : no scoring of the test invoices (next cell) and no use of the answer key.
-# =============================================================================
 import time
 import numpy as np
 import pandas as pd
@@ -2923,16 +2719,8 @@ A sanity check follows: the average predicted risk of batches that really were r
 #### Objective 1: Batch rejection
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS
 # PREDICT X_TEST
-#
-# Goal    : let every trained model score the batches it has never seen.
-# Inputs  : trained_models, X_test_s, y_test, case_info
-# Output  : test_proba   (model name -> probability that each test batch is rejected)
-#           predictions  (one row per test batch, one risk column per model)
-# Not done: no accuracy scores and no cut-off yet; judging the models is the evaluation step.
-# =============================================================================
 import numpy as np
 import pandas as pd
 
@@ -2973,18 +2761,8 @@ predictions.head(10)
 #### Objective 2: Demand forecast
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 2: FORECAST DEMAND
 # PREDICT X_TEST
-#
-# Goal    : let every trained model forecast the most recent 20% of sales, which it has never seen
-#           and which are later in time than everything it trained on.
-# Inputs  : trained_models, X_test_s, y_test, case_info
-# Output  : test_pred_units  (model name -> forecast units for each test sale)
-#           predictions      (one row per test sale, one forecast column per model)
-# Note    : models predict log units; np.expm1 converts them back to real units.
-# Not done: no error scores yet; judging the models is the evaluation step.
-# =============================================================================
 import numpy as np
 import pandas as pd
 
@@ -3026,16 +2804,8 @@ predictions.head(10)
 #### Objective 3: Cold-chain excursions
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS
 # PREDICT X_TEST
-#
-# Goal    : let every trained model score the shipments it has never seen.
-# Inputs  : trained_models, X_test_s, y_test, case_info
-# Output  : test_proba   (model name -> probability that each test shipment is excursion)
-#           predictions  (one row per test shipment, one risk column per model)
-# Not done: no accuracy scores and no cut-off yet; judging the models is the evaluation step.
-# =============================================================================
 import numpy as np
 import pandas as pd
 
@@ -3076,16 +2846,8 @@ predictions.head(10)
 #### Objective 4: Serious adverse events
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS
 # PREDICT X_TEST
-#
-# Goal    : let every trained model score the reports it has never seen.
-# Inputs  : trained_models, X_test_s, y_test, case_info
-# Output  : test_proba   (model name -> probability that each test report is serious)
-#           predictions  (one row per test report, one risk column per model)
-# Not done: no accuracy scores and no cut-off yet; judging the models is the evaluation step.
-# =============================================================================
 import numpy as np
 import pandas as pd
 
@@ -3126,16 +2888,8 @@ predictions.head(10)
 #### Objective 5: Pricing anomalies
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
 # PREDICT X_TEST
-#
-# Goal    : let every trained detector score the test invoices it has never seen.
-# Inputs  : trained_models, X_test_s, X_test, case_info
-# Output  : test_score (model -> anomaly score, higher = more unusual), test_flag (model -> 0/1),
-#           predictions (one row per test invoice with every model's score and flag, and a vote count)
-# Not done: the answer key is not used; scoring the detectors is the evaluation step.
-# =============================================================================
 import numpy as np
 import pandas as pd
 
@@ -3202,27 +2956,27 @@ These drivers match what the EDA found, which is a useful check that the models 
 ### Charts
 
 <p align="center">
-  <img src="images/obj1_features.png" alt="Objective 1: what drives batch rejection" width="100%">
+  <img width="3126" height="876" alt="obj1_features" src="https://github.com/user-attachments/assets/db18d096-0567-4453-8ce0-8537dd961c1a" />
 </p>
 <p align="center"><em>Objective 1: Batch rejection</em></p>
 
 <p align="center">
-  <img src="images/obj2_features.png" alt="Objective 2: what drives demand forecast" width="100%">
+  <img width="3202" height="950" alt="obj2_features" src="https://github.com/user-attachments/assets/5e3c979f-4be4-4b2f-9d51-e2d7cf458b7d" />
 </p>
 <p align="center"><em>Objective 2: Demand forecast</em></p>
 
 <p align="center">
-  <img src="images/obj3_features.png" alt="Objective 3: what drives cold-chain excursions" width="100%">
+  <img width="3126" height="876" alt="obj3_features" src="https://github.com/user-attachments/assets/0cf6a966-f4c5-4221-b4b5-b25cca0c246f" />
 </p>
 <p align="center"><em>Objective 3: Cold-chain excursions</em></p>
 
 <p align="center">
-  <img src="images/obj4_features.png" alt="Objective 4: what drives serious adverse events" width="100%">
+  <img width="3126" height="876" alt="obj4_features" src="https://github.com/user-attachments/assets/cd9f7cb5-eef9-4b0c-b044-3af6fd69eaa4" />
 </p>
 <p align="center"><em>Objective 4: Serious adverse events</em></p>
 
 <p align="center">
-  <img src="images/obj5_features.png" alt="Objective 5: what drives pricing anomalies" width="100%">
+  <img width="3126" height="875" alt="obj5_features" src="https://github.com/user-attachments/assets/1e47293c-d52c-4700-abdb-6fee999c57a8" />
 </p>
 <p align="center"><em>Objective 5: Pricing anomalies</em></p>
 
@@ -3231,19 +2985,8 @@ These drivers match what the EDA found, which is a useful check that the models 
 #### Objective 1: Batch rejection
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS
 # COMPARE X AND y
-#
-# Goal    : find out WHICH inputs (X) drive rejection (y), in the data and inside the models,
-#           and whether the four models agree. These are the factors QA can act on.
-# Inputs  : trained_models, X_train, X_train_s, y_train, X_test_s, y_test
-# Output  : correlations, importance_by_model, agreed_features (+ chart saved to the charts folder)
-# Method  : A) correlation of each feature with rejection (training data)
-#           B) permutation importance: shuffle one column and measure how much ROC AUC drops
-#           C) rejection rate in the lowest vs highest quarter of each main numeric driver
-# Not done: nothing is scored or selected here.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3313,19 +3056,8 @@ summary
 #### Objective 2: Demand forecast
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 2: FORECAST DEMAND
 # COMPARE X AND y
-#
-# Goal    : find out WHICH inputs (X) drive units sold (y), in the data and inside the models,
-#           and whether the models agree. These are the factors production planning should lean on.
-# Inputs  : trained_models, X_train, X_train_s, y_train, X_test_s, y_test, X_text
-# Output  : correlations, importance_by_model, agreed_features, group_averages (+ chart saved)
-# Method  : A) correlation of each feature with log units (training data)
-#           B) permutation importance: shuffle one column and measure how much R-squared drops
-#           C) average units for each product area, customer type and sales channel
-# Not done: nothing is scored or selected here.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3394,19 +3126,8 @@ table
 #### Objective 3: Cold-chain excursions
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS
 # COMPARE X AND y
-#
-# Goal    : find out WHICH inputs (X) drive excursion (y), in the data and inside the models,
-#           and whether the four models agree. These are the factors logistics can act on.
-# Inputs  : trained_models, X_train, X_train_s, y_train, X_test_s, y_test
-# Output  : correlations, importance_by_model, agreed_features (+ chart saved to the charts folder)
-# Method  : A) correlation of each feature with excursion (training data)
-#           B) permutation importance: shuffle one column and measure how much ROC AUC drops
-#           C) excursion rate in the lowest vs highest quarter of each main numeric driver
-# Not done: nothing is scored or selected here.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3476,19 +3197,8 @@ summary
 #### Objective 4: Serious adverse events
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS
 # COMPARE X AND y
-#
-# Goal    : find out WHICH inputs (X) drive serious event (y), in the data and inside the models,
-#           and whether the four models agree. These are the factors the safety team can act on.
-# Inputs  : trained_models, X_train, X_train_s, y_train, X_test_s, y_test
-# Output  : correlations, importance_by_model, agreed_features (+ chart saved to the charts folder)
-# Method  : A) correlation of each feature with serious event (training data)
-#           B) permutation importance: shuffle one column and measure how much ROC AUC drops
-#           C) serious-event rate in the lowest vs highest quarter of each main numeric driver
-# Not done: nothing is scored or selected here.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3558,17 +3268,8 @@ summary
 #### Objective 5: Pricing anomalies
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
 # COMPARE X AND y
-#
-# Goal    : explain WHAT makes an invoice unusual. This objective has no target to correlate with, so the
-#           comparison is between the inputs (X) and the anomaly scores: which features do flagged invoices
-#           differ on, and do the four detectors agree on the reasons?
-# Inputs  : trained_models, X_test, X_test_s, predictions
-# Output  : shift (how far flagged invoices sit from normal, per feature and model), corr_score (+ chart saved)
-# Not done: the answer key is not used; scoring the detectors is the evaluation step.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3666,27 +3367,27 @@ The more complex models are never meaningfully better, so the simplest model win
 ### Charts
 
 <p align="center">
-  <img src="images/obj1_evaluation.png" alt="Objective 1 evaluation" width="100%">
+  <img width="2976" height="815" alt="obj1_evaluation" src="https://github.com/user-attachments/assets/a90eb23a-5b84-4b42-84dd-7a54d9d4a9ff" />
 </p>
 <p align="center"><em>Objective 1: Batch rejection, evaluation on unseen data</em></p>
 
 <p align="center">
-  <img src="images/obj2_evaluation.png" alt="Objective 2 evaluation" width="100%">
+  <img width="2976" height="845" alt="obj2_evaluation" src="https://github.com/user-attachments/assets/f12b8083-1ff1-4918-bc29-171a4193fedd" />
 </p>
 <p align="center"><em>Objective 2: Demand forecast, evaluation on unseen data</em></p>
 
 <p align="center">
-  <img src="images/obj3_evaluation.png" alt="Objective 3 evaluation" width="100%">
+  <img width="2976" height="815" alt="obj3_evaluation" src="https://github.com/user-attachments/assets/f1c51e28-82e1-4511-8940-349ebafba33d" />
 </p>
 <p align="center"><em>Objective 3: Cold-chain excursions, evaluation on unseen data</em></p>
 
 <p align="center">
-  <img src="images/obj4_evaluation.png" alt="Objective 4 evaluation" width="100%">
+  <img width="2976" height="815" alt="obj4_evaluation" src="https://github.com/user-attachments/assets/94c8b2a7-5a79-44ad-94d7-eb56c9fcd710" />
 </p>
 <p align="center"><em>Objective 4: Serious adverse events, evaluation on unseen data</em></p>
 
 <p align="center">
-  <img src="images/obj5_evaluation.png" alt="Objective 5 evaluation" width="100%">
+  <img width="2975" height="815" alt="obj5_evaluation" src="https://github.com/user-attachments/assets/d85067cb-1f2b-4ed9-899b-d229d3b1b06c" />
 </p>
 <p align="center"><em>Objective 5: Pricing anomalies, evaluation on unseen data</em></p>
 
@@ -3695,21 +3396,8 @@ The more complex models are never meaningfully better, so the simplest model win
 #### Objective 1: Batch rejection
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS
 # EVALUATE MODEL
-#
-# Goal    : choose the best model and show whether it solves the business problem
-#           (which batches deserve extra inspection before release).
-# Inputs  : trained_models, tuning_results, test_proba, X_train_s, y_train, y_test,
-#           X_test_s, importance_by_model
-# Output  : best_name, model, threshold, money_cutoff, metrics, importance, test_table
-# Method  : 1) CHOOSE using training evidence only (cross-validated ROC AUC from the train cell;
-#              if several models are within one standard deviation, the simplest wins).
-#           2) SET the cut-offs on out-of-fold training predictions (never on the test set).
-#           3) CONFIRM on the test set: all models, confusion matrix, ROC and gain charts.
-#           4) PRICE the decision: cost of inspections vs cost of missed rejections.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3839,21 +3527,8 @@ display(money)
 #### Objective 2: Demand forecast
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 2: FORECAST DEMAND
 # EVALUATE MODEL
-#
-# Goal    : choose the best forecasting model and show whether it solves the business problem
-#           (how many units to make and hold, by product and customer, before orders arrive).
-# Inputs  : trained_models, tuning_results, test_pred_units, y_test, X_test_s, X_text, case_info,
-#           importance_by_model
-# Output  : best_name, model, threshold (None for a forecast), metrics, importance, test_table
-# Method  : 1) CHOOSE using training evidence only (forward-in-time cross-validated error from the
-#              train cell; if several models are within one standard deviation, the simplest wins).
-#           2) CONFIRM on the test set (the latest 20% of sales): error in real units, share of sales
-#              forecast within 20%, bias, and the planning view (totals by product area and month).
-#           3) PRICE the decision: stock cost of over- and under-production against simple plans.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -3961,21 +3636,8 @@ display(money)
 #### Objective 3: Cold-chain excursions
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS
 # EVALUATE MODEL
-#
-# Goal    : choose the best model and show whether it solves the business problem
-#           (which shipments deserve better protection before dispatch).
-# Inputs  : trained_models, tuning_results, test_proba, X_train_s, y_train, y_test,
-#           X_test_s, importance_by_model
-# Output  : best_name, model, threshold, money_cutoff, metrics, importance, test_table
-# Method  : 1) CHOOSE using training evidence only (cross-validated ROC AUC from the train cell;
-#              if several models are within one standard deviation, the simplest wins).
-#           2) SET the cut-offs on out-of-fold training predictions (never on the test set).
-#           3) CONFIRM on the test set: all models, confusion matrix, ROC and gain charts.
-#           4) PRICE the decision: cost of protections vs cost of missed excursions.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -4105,21 +3767,8 @@ display(money)
 #### Objective 4: Serious adverse events
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS
 # EVALUATE MODEL
-#
-# Goal    : choose the best model and show whether it solves the business problem
-#           (which reports the safety team should review first).
-# Inputs  : trained_models, tuning_results, test_proba, X_train_s, y_train, y_test,
-#           X_test_s, importance_by_model
-# Output  : best_name, model, threshold, money_cutoff, metrics, importance, test_table
-# Method  : 1) CHOOSE using training evidence only (cross-validated ROC AUC from the train cell;
-#              if several models are within one standard deviation, the simplest wins).
-#           2) SET the cut-offs on out-of-fold training predictions (never on the test set).
-#           3) CONFIRM on the test set: all models, confusion matrix, ROC and gain charts.
-#           4) PRICE the decision: cost of urgent reviews vs cost of missed serious cases.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -4249,19 +3898,8 @@ display(money)
 #### Objective 5: Pricing anomalies
 
 ```python
-# =============================================================================
 # BUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES
 # EVALUATE MODEL
-#
-# Goal    : choose the best detector and show whether it solves the business problem
-#           (which invoices finance should review for pricing errors or irregularities).
-# Inputs  : trained_models, X_train_s, X_test_s, X_test, y_train, y_test (the answer key), predictions, case_info, raw
-# Output  : best_name, model, threshold (None), metrics, importance, test_table, money
-# Method  : the detectors never saw the answer key, so scoring them against it is fair.
-#           1) CHOOSE using the TRAIN invoices (best PR AUC; the simplest detector if several are close).
-#           2) CONFIRM on the TEST invoices: all detectors, a "2 of 4 detectors agree" vote and a fixed price rule.
-#           3) PRICE the decision: money recovered against the cost of review.
-# =============================================================================
 import os
 import numpy as np
 import pandas as pd
@@ -4417,57 +4055,45 @@ The risk tiers hold up well: High-tier batches are rejected 45% of the time (3.0
 ### Charts
 
 <p align="center">
-  <img src="images/business_all_objectives_summary.png" alt="Effort against result for all five objectives" width="100%">
+  <img width="2384" height="860" alt="business_all_objectives_summary" src="https://github.com/user-attachments/assets/a1351007-bd68-44fe-a114-deb728c0379a" />
 </p>
 <p align="center"><em>All five objectives: work created against problems caught, and gain over the best simple alternative</em></p>
 
 <p align="center">
-  <img src="images/business_objective1_batch_rejection.png" alt="Business analysis for objective 1" width="100%">
+  <img width="2382" height="1551" alt="business_objective1_batch_rejection" src="https://github.com/user-attachments/assets/b0159ad6-c20c-4053-aa37-e7b3772408e3" />
 </p>
 <p align="center"><em>Objective 1: Batch rejection, business analysis</em></p>
 
 <p align="center">
-  <img src="images/business_objective2_demand_forecast.png" alt="Business analysis for objective 2" width="100%">
+  <img width="2379" height="1551" alt="business_objective2_demand_forecast" src="https://github.com/user-attachments/assets/4467c9c9-4597-430f-9783-38fec11a2154" />
 </p>
 <p align="center"><em>Objective 2: Demand forecast, business analysis</em></p>
 
 <p align="center">
-  <img src="images/business_objective3_cold_chain.png" alt="Business analysis for objective 3" width="100%">
+  <img width="2382" height="1551" alt="business_objective3_cold_chain" src="https://github.com/user-attachments/assets/46a46697-21b3-4b7b-ad65-1dbcd2237111" />
 </p>
 <p align="center"><em>Objective 3: Cold-chain excursions, business analysis</em></p>
 
 <p align="center">
-  <img src="images/business_objective4_adverse_events.png" alt="Business analysis for objective 4" width="100%">
+  <img width="2383" height="1551" alt="business_objective4_adverse_events" src="https://github.com/user-attachments/assets/ee08ca3d-4958-4481-bd55-59f54b3c3751" />
 </p>
 <p align="center"><em>Objective 4: Serious adverse events, business analysis</em></p>
 
 <p align="center">
-  <img src="images/business_objective5_pricing_anomalies.png" alt="Business analysis for objective 5" width="100%">
+  <img width="2384" height="1551" alt="business_objective5_pricing_anomalies" src="https://github.com/user-attachments/assets/47cb2f09-7070-4e23-a380-4b4f38aacf4c" />
 </p>
 <p align="center"><em>Objective 5: Pricing anomalies, business analysis</em></p>
 
 ### Full code (one cell for all five objectives)
 
 ```python
-# =============================================================================
-# VERIDIAN PHARMA GLOBAL: BUSINESS ANALYSIS FOR ALL FIVE BUSINESS OBJECTIVES (ONE CELL)
-#
+# BUSINESS ANALYSIS FOR ALL FIVE BUSINESS OBJECTIVES (ONE CELL)
 # Purpose : turn the five winning models into business decisions, with charts, in a single cell.
 #   Objective 1  Batch rejection        -> which batches get extra inspection
 #   Objective 2  Demand forecast        -> how much to make, and what a wrong plan costs
 #   Objective 3  Cold-chain excursions  -> which shipments get better protection
 #   Objective 4  Serious adverse events -> which reports the safety team reviews first
 #   Objective 5  Pricing anomalies      -> which invoices finance checks
-# Method  : every figure comes from the held-out TEST rows (never seen in training). The cell is
-#           self-contained: it re-runs each objective's train, predict, compare and evaluate cells
-#           silently in a private workspace, so it never overwrites what the notebook holds and works
-#           whichever objective was run last. The first run takes several minutes; the model results
-#           are then cached in models/_business_cache, so later runs take seconds.
-# Output  : an executive summary and charts for each objective, a one-table summary of all five,
-#           and models/business_analysis/ (charts + business_summary.csv).
-# Costs   : the figures below are EXAMPLES. Replace them with real values and run the cell again;
-#           no model is retrained (the cached model results are re-priced).
-# =============================================================================
 import base64, contextlib, io, os, time, warnings, zlib
 import joblib
 import numpy as np
@@ -4499,9 +4125,9 @@ for d in (f"{OUT}/charts", CACHE):
 BLUE, ORANGE, AQUA, AMBER, RED, GREY, INK = "#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#d03b3b", "#9a9892", "#0b0b0b"
 TIER_COLOR = {"High": RED, "Medium": AMBER, "Low": BLUE}
 DIVERGE = LinearSegmentedColormap.from_list("gain", [RED, "#f0efec", BLUE])
-# =============================================================================
+
 # 1. THE FIVE EVALUATED MODELS (packed; re-run silently only when the cache is missing)
-# =============================================================================
+
 _PIPELINES = {...}   # packed copy of every objective's train, predict, compare and evaluate cells (sections 14 to 17).
                     # It is what lets this cell run on its own; it is left out here to keep the README readable.
 
@@ -4574,9 +4200,9 @@ plt.rcParams.update({"font.size": 10, "axes.titlesize": 11.5, "axes.titleweight"
                      "axes.edgecolor": "#c9c8c2", "axes.grid": True, "grid.color": "#ececea", "axes.axisbelow": True, "figure.facecolor": "white"})  # set AFTER the model cells run (they change the plot style)
 print(f"Evaluated models loaded for all 5 objectives ({time.time() - _t0:.0f}s).\n")
 
-# =============================================================================
+
 # 2. SMALL SHARED HELPERS (tables and chart panels; all wording is set per objective below)
-# =============================================================================
+
 def _rates(df, col, target, min_n=30):
     g = df.groupby(col)[target].agg(n="size", rate="mean")
     return g[g["n"] >= min_n].sort_values("rate", ascending=False)
@@ -4631,9 +4257,9 @@ SUMMARY = []
 _thousands = FuncFormatter(lambda v, _: f"{v:,.0f}")
 _label_box = dict(fc="white", ec="none", pad=1.2)
 
-# =============================================================================
+
 # 3. BUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS  ->  which batches to inspect
-# =============================================================================
+
 print("=" * 100 + "\nBUSINESS OBJECTIVE 1: REDUCE BATCH REJECTIONS\n" + "=" * 100)
 c1, m1 = INPUTS[1]
 n1, k1, y1 = len(c1), int(c1["rejected"].sum()), c1["rejected"].to_numpy()
@@ -4658,9 +4284,9 @@ SUMMARY.append({"objective": "1 Batch rejection", "best model": m1["best_name"],
                 "problems caught %": r1["problems caught"] / k1 * 100, "net benefit": r1["net benefit"], "gain over best simple": r1["net benefit"] - simple1.max(),
                 "hot spot": f"{plants1.index[0]} ({plants1['rate'].iloc[0]:.0%} rejected)"})
 
-# =============================================================================
+
 # 4. BUSINESS OBJECTIVE 2: DEMAND FORECAST  ->  how much to make, and what a wrong plan costs
-# =============================================================================
+
 print("\n" + "=" * 100 + "\nBUSINESS OBJECTIVE 2: FORECAST DEMAND\n" + "=" * 100)
 c2, m2 = INPUTS[2]
 a2, f2 = c2["actual"].to_numpy(), c2["forecast"].to_numpy()
@@ -4712,9 +4338,9 @@ SUMMARY.append({"objective": "2 Demand forecast", "best model": m2["best_name"],
                 "workload %": np.nan, "problems caught %": np.nan, "net benefit": saving2, "gain over best simple": saving2,
                 "hot spot": f"{worst2} (bias {by_area2.loc[worst2, 'bias %']:+.1f}%)"})
 
-# =============================================================================
+
 # 5. BUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS  ->  which shipments to protect
-# =============================================================================
+
 print("\n" + "=" * 100 + "\nBUSINESS OBJECTIVE 3: PREVENT COLD-CHAIN EXCURSIONS\n" + "=" * 100)
 c3, m3 = INPUTS[3]
 n3, k3, y3 = len(c3), int(c3["excursion"].sum()), c3["excursion"].to_numpy()
@@ -4739,9 +4365,9 @@ SUMMARY.append({"objective": "3 Cold-chain excursions", "best model": m3["best_n
                 "problems caught %": r3["problems caught"] / k3 * 100, "net benefit": r3["net benefit"], "gain over best simple": r3["net benefit"] - simple3.max(),
                 "hot spot": f"{dest3.index[0]} ({dest3['rate'].iloc[0]:.0%} excursions)"})
 
-# =============================================================================
+
 # 6. BUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS  ->  which reports the safety team reviews first
-# =============================================================================
+
 print("\n" + "=" * 100 + "\nBUSINESS OBJECTIVE 4: REDUCE SERIOUS ADVERSE EVENTS\n" + "=" * 100)
 c4, m4 = INPUTS[4]
 n4, k4, y4 = len(c4), int(c4["serious"].sum()), c4["serious"].to_numpy()
@@ -4766,9 +4392,9 @@ SUMMARY.append({"objective": "4 Serious adverse events", "best model": m4["best_
                 "problems caught %": r4["problems caught"] / k4 * 100, "net benefit": r4["net benefit"], "gain over best simple": r4["net benefit"] - simple4.max(),
                 "hot spot": f"{area4.index[0]} ({area4['rate'].iloc[0]:.0%} serious)"})
 
-# =============================================================================
+
 # 7. BUSINESS OBJECTIVE 5: FIND PRICING ANOMALIES  ->  which invoices finance should check
-# =============================================================================
+
 print("\n" + "=" * 100 + "\nBUSINESS OBJECTIVE 5: FIND UNUSUAL PRICES AND INVOICES\n" + "=" * 100)
 c5, m5 = INPUTS[5]
 n5, k5, y5 = len(c5), int(c5["anomaly"].sum()), c5["anomaly"].to_numpy()
@@ -4821,9 +4447,9 @@ SUMMARY.append({"objective": "5 Pricing anomalies", "best model": m5["best_name"
                 "problems caught %": r5["anomalies caught"] / k5 * 100, "net benefit": r5["net value"], "gain over best simple": r5["net value"] - max(0, plans5.loc["Check every invoice", "net value"]),
                 "hot spot": f"{spots5.index[0]} ({spots5['rate'].iloc[0]:.1%} anomalies)"})
 
-# =============================================================================
+
 # 8. ALL FIVE TOGETHER
-# =============================================================================
+
 print("\n" + "=" * 100 + "\nALL FIVE OBJECTIVES: THE DECISION IN ONE TABLE\n" + "=" * 100)
 business_summary = pd.DataFrame(SUMMARY).set_index("objective")
 business_summary.round(1).to_csv(f"{OUT}/business_summary.csv")
@@ -4868,9 +4494,7 @@ Each winning model is saved as **three `.joblib` files**, enough to score new da
 ### Full code (one cell for all five objectives)
 
 ```python
-# =============================================================================
-# VERIDIAN PHARMA GLOBAL: SAVE MODEL, SCALER AND FEATURES FOR ALL FIVE OBJECTIVES (ONE CELL)
-#
+# SAVE MODEL, SCALER AND FEATURES FOR ALL FIVE OBJECTIVES (ONE CELL)
 # Purpose : save the winning model of each business objective so it can be deployed without this notebook.
 #   Objective 1  Batch rejection        -> Logistic Regression
 #   Objective 2  Demand forecast        -> Linear Regression (Ridge)
@@ -4883,12 +4507,7 @@ Each winning model is saved as **three `.joblib` files**, enough to score new da
 #             features.joblib  the exact input columns and order, fill values for blanks, allowed category
 #                              values, cut-offs and risk tiers, the test results and the library version
 #           and models/saved_models_summary.csv listing every file.
-# Check   : each objective is then RELOADED from its three files alone and must reproduce the notebook's
-#           own test predictions (a deployment-readiness check). Nothing is marked saved until it passes.
-# Method  : like the business analysis cell, this cell is self-contained: it re-runs each objective's train,
-#           predict, compare and evaluate cells silently in a private workspace (about 4 minutes), so it works
-#           whichever objective the notebook holds and never overwrites it.
-# =============================================================================
+
 import base64, contextlib, io, os, time, warnings, zlib
 from datetime import date
 import joblib, sklearn
@@ -4990,9 +4609,9 @@ def _record(label, folder, ok, detail):
         FILES.append({"objective": label, "file": f"{folder}/{f}", "size KB": round(os.path.getsize(f"{folder}/{f}") / 1024, 1)})
 
 t0 = time.time()
-# =============================================================================
+
 # OBJECTIVE 1: BATCH REJECTION (Logistic Regression)
-# =============================================================================
+
 print("Objective 1: training, then saving ...")
 ns = _run_pipeline(1)
 folder = _save_three(ns, _classification_info(ns, ["Inspect first", "Inspect if capacity allows", "Release as normal"]))
@@ -5001,9 +4620,9 @@ ok = bool(np.allclose(reloaded["rejection_risk"], ns["test_proba"][ns["best_name
 _record("1 Batch rejection", folder, ok, f"{len(reloaded)} test batches: risks match the notebook's within 0.001")
 sample1 = reloaded.head(5)
 
-# =============================================================================
+
 # OBJECTIVE 2: DEMAND FORECAST (Linear Regression, Ridge)
-# =============================================================================
+
 print("Objective 2: training, then saving ...")
 ns = _run_pipeline(2)
 info = {
@@ -5018,9 +4637,9 @@ ok = bool(np.allclose(reloaded["forecast_units"], ns["p_best"], atol=1.0))
 _record("2 Demand forecast", folder, ok, f"{len(reloaded)} test sales: forecasts match the notebook's within 1 unit")
 sample2 = reloaded.head(5)
 
-# =============================================================================
+
 # OBJECTIVE 3: COLD-CHAIN EXCURSIONS (Logistic Regression)
-# =============================================================================
+
 print("Objective 3: training, then saving ...")
 ns = _run_pipeline(3)
 folder = _save_three(ns, _classification_info(ns, ["Protect first", "Protect if budget allows", "Ship as normal"]))
@@ -5029,9 +4648,9 @@ ok = bool(np.allclose(reloaded["excursion_risk"], ns["test_proba"][ns["best_name
 _record("3 Cold-chain excursions", folder, ok, f"{len(reloaded)} test shipments: risks match the notebook's within 0.001")
 sample3 = reloaded.head(5)
 
-# =============================================================================
+
 # OBJECTIVE 4: SERIOUS ADVERSE EVENTS (Logistic Regression)
-# =============================================================================
+
 print("Objective 4: training, then saving ...")
 ns = _run_pipeline(4)
 folder = _save_three(ns, _classification_info(ns, ["Review first", "Review next", "Standard queue"]))
@@ -5040,9 +4659,9 @@ ok = bool(np.allclose(reloaded["serious_event_risk"], ns["test_proba"][ns["best_
 _record("4 Serious adverse events", folder, ok, f"{len(reloaded)} test reports: risks match the notebook's within 0.001")
 sample4 = reloaded.head(5)
 
-# =============================================================================
+
 # OBJECTIVE 5: PRICING ANOMALIES (Elliptic Envelope; unsupervised, so no target and no cut-off)
-# =============================================================================
+
 print("Objective 5: training, then saving ...")
 ns = _run_pipeline(5)
 info = {"objective": ns["OBJECTIVE"], "title": "Find unusual prices and invoices", "task": "anomaly_detection", "target": None,
@@ -5057,9 +4676,9 @@ ok = bool(np.allclose(reloaded["anomaly_score"], ns["s_best"], atol=1e-3) and (r
 _record("5 Pricing anomalies", folder, ok, f"{len(reloaded)} test invoices: scores and flags match the notebook's")
 sample5 = reloaded.head(5)
 
-# =============================================================================
+
 # SUMMARY
-# =============================================================================
+
 saved_models_summary = pd.DataFrame(FILES)
 saved_models_summary.to_csv("models/saved_models_summary.csv", index=False)
 print(f"\nFinished in {time.time() - t0:.0f}s. Deployment-readiness check (each objective reloaded from its three files alone):\n")
@@ -5094,8 +4713,7 @@ The zip is reopened and every file is fingerprinted again before the cell report
 ### Full code
 
 ```python
-# =============================================================================
-# VERIDIAN PHARMA GLOBAL: DOWNLOAD MODEL, SCALER AND FEATURES FOR DEPLOYMENT (ONE CELL)
+# DOWNLOAD MODEL, SCALER AND FEATURES FOR DEPLOYMENT (ONE CELL)
 #
 # Purpose : package the 15 saved files (3 per objective) into one deployment bundle.
 # Inputs  : the files written by the save cell, in models/<objective>/ (model, scaler, features .joblib)
@@ -5103,10 +4721,6 @@ The zip is reopened and every file is fingerprinted again before the cell report
 #           deployment/veridian_pharma_models/      the same files unzipped, ready to use
 #           Inside the bundle: manifest.json (file sizes and SHA-256 fingerprints, library versions, results)
 #                              and README_DEPLOY.txt (how to load and score with the files)
-# Check   : the zip is reopened and every file is re-fingerprinted; nothing is reported until all 15 match.
-# Download: in Google Colab the zip downloads automatically. In VS Code or Jupyter it is already on your
-#           computer: the cell prints its full path.
-# =============================================================================
 import hashlib, json, os, shutil, zipfile
 from datetime import datetime
 import joblib, sklearn
