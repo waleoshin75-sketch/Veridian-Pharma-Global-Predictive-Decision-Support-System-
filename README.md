@@ -4867,7 +4867,6 @@ Live app: [Open the Streamlit app](YOUR-STREAMLIT-LINK)
 ### Full code: app.py
 
 ```python
-# =============================================================================
 # PHARMACEUTICAL BUSINESS OPERATIONS PREDICTION SYSTEM (Veridian Pharma Global)
 # A Streamlit app that uses the five saved models (model, scaler and features .joblib files).
 #
@@ -4877,19 +4876,7 @@ Live app: [Open the Streamlit app](YOUR-STREAMLIT-LINK)
 #   Cold-Chain Protection Will this shipment get too hot?  Logistic Regression
 #   Drug Safety           Is this report a serious event?  Logistic Regression
 #   Pricing Control       Is this invoice priced oddly?    Elliptic Envelope
-#
-# HOW TO RUN (in the VS Code terminal)
-#   1. pip install streamlit pandas numpy scikit-learn joblib
-#   2. Put this file (app.py) in the same folder as your "models" folder
-#      (or your unzipped "deployment/veridian_pharma_models" folder).
-#   3. streamlit run app.py          (it opens in your browser)
-#
-# HOW THE FILE IS ORGANISED (read it top to bottom)
-#   Part 1  Find and load the saved files
-#   Part 2  Scoring helpers (turn one case into a prediction)
-#   Part 3  The five objectives: the questions to ask, and how answers become model inputs
-#   Part 4  Drawing the pages
-# =============================================================================
+
 from pathlib import Path
 import math
 
@@ -4901,9 +4888,9 @@ import streamlit as st
 
 st.set_page_config(page_title="Pharmaceutical Business Operations Prediction System", page_icon="💊", layout="wide")
 
-# =============================================================================
+
 # PART 1. FIND AND LOAD THE SAVED FILES
-# =============================================================================
+
 HERE = Path(__file__).parent
 FOLDERS = {"batch_quality": "batch_rejection", "demand_planning": "demand_forecast", "cold_chain": "cold_chain",
            "drug_safety": "adverse_events", "pricing_control": "pricing_anomalies"}
@@ -4927,9 +4914,9 @@ def load_files(folder):
     return (joblib.load(ROOT / folder / "model.joblib"), joblib.load(ROOT / folder / "scaler.joblib"),
             joblib.load(ROOT / folder / "features.joblib"))
 
-# =============================================================================
+
 # PART 2. SCORING HELPERS
-# =============================================================================
+
 def prepare(raw_rows, info, scaler):
     """Raw input columns -> exactly the table the model was trained on (same columns, same order, scaled)."""
     X = raw_rows[info["numeric_inputs"] + info["categorical_inputs"]].copy()
@@ -4967,11 +4954,11 @@ MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "
 def season_of(month):
     return "Winter" if month in (12, 1, 2) else "Spring" if month in (3, 4, 5) else "Summer" if month in (6, 7, 8) else "Autumn"
 
-# =============================================================================
+
 # PART 3. THE FIVE OBJECTIVES
 # Each objective has: a list of questions (fields) and a function that turns the answers into the model's inputs.
 # Field helpers: num = a number, pick = a drop-down, yesno = Yes/No (stored as 1/0), when = a date.
-# =============================================================================
+
 def num(name, label, default, low, high, step=1, help=""):
     return {"name": name, "label": label, "kind": "num", "default": default, "low": low, "high": high, "step": step, "help": help}
 def pick(name, label, options, default=None, help=""):
@@ -5090,9 +5077,9 @@ PAGES = {
     "Pricing Control": {"folder": "pricing_anomalies", "fields": pricing_fields, "row": pricing_row, "kind": "anomaly", "what": "Is this invoice priced unusually?",
         "intro": "Enter an invoice. The model and a simple price rule check whether it looks unusual, so finance can decide which invoices to review."}}
 
-# =============================================================================
+
 # PART 4. DRAWING THE PAGES
-# =============================================================================
+
 def draw_field(field, key):
     """Show one question and return the answer."""
     if field["kind"] == "num":
