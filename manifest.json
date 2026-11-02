@@ -1,0 +1,200 @@
+{
+  "created": "2026-11-01T14:28:36",
+  "sklearn_version_here": "1.9.0",
+  "joblib_version_here": "1.5.3",
+  "objectives": {
+    "batch_rejection": {
+      "label": "1 Batch rejection",
+      "model_name": "Logistic Regression",
+      "task": "classification",
+      "scoring_function": "predict_batch_rejection",
+      "trained_on": "2026-11-01",
+      "sklearn_version_trained": "1.9.0",
+      "n_input_columns": 22,
+      "metrics": {
+        "roc_auc": 0.8169,
+        "pr_auc": 0.5,
+        "found_in_riskiest_20%": 57.8947,
+        "flagged": 176.0,
+        "caught": 80.0,
+        "missed": 72.0,
+        "false_alarms": 96.0,
+        "precision_%": 45.4545,
+        "recall_%": 52.6316,
+        "f1": 0.4878,
+        "true_negatives": 752.0,
+        "false_positives": 96.0,
+        "false_negatives": 72.0,
+        "true_positives": 80.0,
+        "baseline_roc_auc": 0.5
+      },
+      "files": {
+        "model.joblib": {
+          "size_bytes": 1839,
+          "sha256": "f96d27f7211f6a6262c23b07e83be2167632bb19f181f1420c5c97b5235e679c"
+        },
+        "scaler.joblib": {
+          "size_bytes": 1271,
+          "sha256": "81ae62c4e85c46cbbddc00b0fe6abde6fe2cf1efc5502ada064790e57ab02cc1"
+        },
+        "features.joblib": {
+          "size_bytes": 2621,
+          "sha256": "ea3b48c32f53a390e7e04ae9ca0438b41a1b50678cbf00c9642ba1619e754602"
+        }
+      }
+    },
+    "demand_forecast": {
+      "label": "2 Demand forecast",
+      "model_name": "Linear Regression (Ridge)",
+      "task": "regression",
+      "scoring_function": "predict_demand",
+      "trained_on": "2026-11-01",
+      "sklearn_version_trained": "1.9.0",
+      "n_input_columns": 36,
+      "metrics": {
+        "r2 (log scale)": 0.922,
+        "avg error (units)": 108.1431,
+        "typical error (units)": 189.9281,
+        "error % of units (WAPE)": 21.3069,
+        "within 20% of actual (%)": 56.0498,
+        "bias (units, + = over-forecast)": -5.7692,
+        "baseline_avg_error_units": 337.1851
+      },
+      "files": {
+        "model.joblib": {
+          "size_bytes": 2023,
+          "sha256": "bc6fc498d6e4a138fd249c2fd20733c57e4686ab1f84a96b82a4a2536fa335a8"
+        },
+        "scaler.joblib": {
+          "size_bytes": 1271,
+          "sha256": "3500fe6c4e43bf871f9a1939062e05b5a94241036536cba25ef18561fb1047a1"
+        },
+        "features.joblib": {
+          "size_bytes": 3687,
+          "sha256": "d4686e5334e06e133f87e87d8734cee85df61b4c4636cf719e4b449a8c4d85f0"
+        }
+      }
+    },
+    "cold_chain": {
+      "label": "3 Cold-chain excursions",
+      "model_name": "Logistic Regression",
+      "task": "classification",
+      "scoring_function": "predict_cold_chain",
+      "trained_on": "2026-11-01",
+      "sklearn_version_trained": "1.9.0",
+      "n_input_columns": 37,
+      "metrics": {
+        "roc_auc": 0.8172,
+        "pr_auc": 0.543,
+        "found_in_riskiest_20%": 55.0725,
+        "flagged": 165.0,
+        "caught": 73.0,
+        "missed": 65.0,
+        "false_alarms": 92.0,
+        "precision_%": 44.2424,
+        "recall_%": 52.8986,
+        "f1": 0.4818,
+        "true_negatives": 645.0,
+        "false_positives": 92.0,
+        "false_negatives": 65.0,
+        "true_positives": 73.0,
+        "baseline_roc_auc": 0.5
+      },
+      "files": {
+        "model.joblib": {
+          "size_bytes": 2383,
+          "sha256": "bac82c82cf2f81cbe05da7615bb588c473f313c9d96614df0e72ee7d2bcb1cf2"
+        },
+        "scaler.joblib": {
+          "size_bytes": 1023,
+          "sha256": "f5ce32e97ca288bf83d1d0f976eb4cd97638093b92cc6765ae25f19184e23b71"
+        },
+        "features.joblib": {
+          "size_bytes": 3825,
+          "sha256": "13a4ed8df557a77bad1bac23215556f1f9aa877dea05cf590065a9bcbfdd63a9"
+        }
+      }
+    },
+    "adverse_events": {
+      "label": "4 Serious adverse events",
+      "model_name": "Logistic Regression",
+      "task": "classification",
+      "scoring_function": "predict_adverse_events",
+      "trained_on": "2026-11-01",
+      "sklearn_version_trained": "1.9.0",
+      "n_input_columns": 21,
+      "metrics": {
+        "roc_auc": 0.9102,
+        "pr_auc": 0.7289,
+        "found_in_riskiest_20%": 66.6667,
+        "flagged": 106.0,
+        "caught": 66.0,
+        "missed": 24.0,
+        "false_alarms": 40.0,
+        "precision_%": 62.2642,
+        "recall_%": 73.3333,
+        "f1": 0.6735,
+        "true_negatives": 320.0,
+        "false_positives": 40.0,
+        "false_negatives": 24.0,
+        "true_positives": 66.0,
+        "baseline_roc_auc": 0.5
+      },
+      "files": {
+        "model.joblib": {
+          "size_bytes": 1823,
+          "sha256": "4ef9970021e7dbd90ffa27dcb01a48cae0847210d8a6966d5f067970d198311b"
+        },
+        "scaler.joblib": {
+          "size_bytes": 1119,
+          "sha256": "471cd8caa29ab5a893c189653c86a12acdfc00084a8fae446669c73aecf604fc"
+        },
+        "features.joblib": {
+          "size_bytes": 2521,
+          "sha256": "87e316e09bb85b808e0d061b1613ff659dc37b86e073923c9f14722a0cc82408"
+        }
+      }
+    },
+    "pricing_anomalies": {
+      "label": "5 Pricing anomalies",
+      "model_name": "Elliptic Envelope",
+      "task": "anomaly_detection",
+      "scoring_function": "predict_pricing_anomalies",
+      "trained_on": "2026-11-01",
+      "sklearn_version_trained": "1.9.0",
+      "n_input_columns": 7,
+      "metrics": {
+        "roc_auc": 0.9985,
+        "pr_auc": 0.9316,
+        "found_in_top_5%": 100.0,
+        "flagged": 40.0,
+        "caught": 36.0,
+        "missed": 4.0,
+        "false_alarms": 4.0,
+        "precision_%": 90.0,
+        "recall_%": 90.0,
+        "f1": 0.9,
+        "true_negatives": 1456.0,
+        "false_positives": 4.0,
+        "false_negatives": 4.0,
+        "true_positives": 36.0,
+        "rule_recall_pct": 100.0,
+        "rule_precision_pct": 100.0
+      },
+      "files": {
+        "model.joblib": {
+          "size_bytes": 47694,
+          "sha256": "3c0ccde7446461747f629250a56b68ed12e28b6d72ed34df4c83e87a159c33ef"
+        },
+        "scaler.joblib": {
+          "size_bytes": 1087,
+          "sha256": "a24f65fad30a07e5fd81e54c26db902410761ef951a569583cb1eec6b0be92c9"
+        },
+        "features.joblib": {
+          "size_bytes": 1404,
+          "sha256": "c0a653083b6d94aacc1077390fbf867a3eb3b9396ac111eb7d7b2e5b9a275781"
+        }
+      }
+    }
+  }
+}
