@@ -48,7 +48,8 @@ The data is fictional and was built with realistic quality problems, so every st
 20. [Download Model, Scaler and Features](#20-download-model-scaler-and-features)
 21. [Key Findings and Insights](#21-key-findings-and-insights)
 22. [Recommendations](#22-recommendations)
-23. [Conclusion](#23-conclusion)
+23. [Impact](#23-impact)
+24. [Conclusion](#24-conclusion)
 
 ---
 
@@ -5277,7 +5278,64 @@ else:
 
 ---
 
-## 23. Conclusion
+## 23. Impact
+
+This section shows what the models are worth if they are used the way section 22 recommends. Every figure comes from the unseen test rows. Money figures use **example costs** (set out below), so treat them as a way to compare policies, not as a forecast of real savings.
+
+### The size of each problem today
+
+| # | Business problem | What the data shows |
+|---|---|---|
+| 1 | Batch rejection | 605 batches (15.2%) were rejected. Two plants, PLT-16 and PLT-17, carry 44% of the rejected production cost |
+| 2 | Demand planning | 21 of 40 products bring in 80% of revenue. Month 3 runs 15% above the average month |
+| 3 | Cold chain | 15.8% of shipments had an excursion and 55% of those were written off, about $8.2M of sales value |
+| 4 | Drug safety | 20% of reports are serious, rising to 36% for patients aged 65 and over |
+| 5 | Pricing | 131 invoices (2.2%) are priced below 50% or above 150% of list: a $1.89M shortfall and $6.2M of over-billing risk |
+
+### What the models change
+
+| # | Policy | Effort | Result on unseen data | Net benefit (example costs) | Gain over the best simple policy |
+|---|---|---|---|---|---|
+| 1 | Inspect High and Medium risk batches | 47% of batches | Catches **86%** of rejections | 419,500 | +159,500 |
+| 2 | Plan production from the forecast, by product area and month | n/a | Forecast error falls to **10%**. Stock cost 499,180 against 1,721,109 | **-71%** stock cost | in every cost scenario tested |
+| 3 | Protect High and Medium risk shipments | 71% of shipments | Prevents up to **97%** of excursions | 349,400 | +59,900 |
+| 4 | Review High and Medium risk reports first | 54% of reports | Reaches **99%** of serious cases | 230,400 | +27,900 |
+| 5 | Fixed price rule on every invoice, model as a second check | 3% of invoices | Flags **100%** of the 40 mispriced invoices | 1,183,836 | +73,000 |
+
+### In plain terms
+
+- **Batches:** inspecting under half the batches finds about 9 in 10 rejections. Low-tier batches are rejected only 4% of the time, so they can be released as normal. At the cost-based cut-off the model catches 131 of 152 rejections, against 80 at the balanced cut-off.
+- **Demand:** a single sale is forecast to within 21%, but once sales are added up by product area and month (how production is actually planned) the error is only 10%. That is where the 71% fall in stock cost comes from. Vaccines is the hardest to plan (17% error) and Oncology the easiest (4%).
+- **Cold chain:** Low-tier shipments had an excursion only 2% of the time, and only 4 of 138 excursions fell there. Protecting the rest is far cheaper than writing off the 55% of excursions that are lost.
+- **Safety:** High-tier reports are serious 62% of the time. Only 1 of 206 Low-tier reports was serious, so urgent review effort can go where the risk is.
+- **Pricing:** a transparent price rule caught all 40 mispriced invoices with no false alarms and beat every model. The Elliptic Envelope model caught 36 of 40 with 4 false alarms, so it stays as a second check for odd patterns the rule misses.
+
+### What it cost to get there
+
+The net benefit figures above are built on these example costs, which you can change in section 18 and re-run:
+
+| # | Example cost used |
+|---|---|
+| 1 | 500 to inspect a batch, 5,000 for a rejection that slips through |
+| 2 | 2 per unit made but unsold, 6 per unit demanded but unavailable |
+| 3 | 300 to protect a shipment, 4,000 for an excursion on an unprotected one |
+| 4 | 150 for an urgent review, 3,000 for a serious case left waiting |
+| 5 | 50 to check an invoice, 50% of the price gap recovered |
+
+### Where to start
+
+The biggest and easiest gains are the two plants behind 44% of rejected cost, sea freight and Nigeria-bound shipments, patients aged 65 and over, and the monthly invoice exception review. If those two plants matched the others, about 176 fewer batches and 25% less rejected cost would follow.
+
+### What to keep in mind
+
+- The dollar figures rest on example costs. Replace them with real inspection, protection, review and shortage costs before quoting a saving.
+- Each result comes from one held-out sample, so measure it against current practice in a pilot before scaling.
+- At the balanced cut-offs, fewer than half of the flagged batches and shipments are real problems. The models decide **where to look first**, and a person still makes the call.
+- The data is fictional, so the figures show how the method works and not how a real plant performs.
+
+---
+
+## 24. Conclusion
 
 I built five models for five business problems, compared at least four algorithms for each, chose the winners on training evidence and confirmed them on unseen data. Logistic Regression solved batch rejection, cold-chain excursions and serious adverse events. Ridge regression handled the demand forecast, and Elliptic Envelope handled pricing anomalies. All five are saved with their scalers and feature definitions, reload and reproduce the notebook's results, and run in a Streamlit app that scores one case or a whole file.
 
