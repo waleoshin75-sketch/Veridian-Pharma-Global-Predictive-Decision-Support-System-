@@ -2,7 +2,12 @@
 
 **Veridian Pharma Global | Business Operations Analytics**
 
-**Python | pandas | scikit-learn | Streamlit** | Seven messy tables turned into five working prediction models and a live web app
+<p align="left">
+<img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/scikit--learn-1.9-F7931E?logo=scikitlearn&logoColor=white" alt="scikit-learn">
+<img src="https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit">
+<img src="https://img.shields.io/badge/Models-5-2E7D32" alt="Five models">
+</p>
 
 [Live Streamlit App](YOUR-STREAMLIT-LINK) | [GitHub Repository](YOUR-GITHUB-LINK)
 
