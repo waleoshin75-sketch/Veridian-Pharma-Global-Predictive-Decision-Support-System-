@@ -2,7 +2,7 @@
 
 **Veridian Pharma Global | Business Operations Analytics**
 
-**A Predictive Platform for Real Time Batch Quality Assurance, Demand Optimization, and Cold Chain Integrity**
+**A Predictive System for Real Time Batch Quality Assurance, Demand Optimization, and Cold Chain Integrity**
 
 <p align="left">
 <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python">
