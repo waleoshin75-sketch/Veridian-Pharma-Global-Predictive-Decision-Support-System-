@@ -1,6 +1,7 @@
 # Pharmaceutical Business Operations Prediction System
 
 **Veridian Pharma Global | Business Operations Analytics**
+
 **A Predictive Platform for Real Time Batch Quality Assurance, Demand Optimization, and Cold Chain Integrity**
 
 <p align="left">
